@@ -23,7 +23,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     description: '',
   };
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     const savedTasks = localStorage.getItem('tasks');
@@ -53,11 +53,15 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   }
 
   deleteTask(index: number) {
+    const confirmed = confirm('¿Estás seguro de eliminar esta tarea?');
+    if (!confirmed) return;
+
     this.tasks.splice(index, 1);
     this.newTask = { title: '', description: '' };
     this.saveTasks();
     this.setFocusTitleInput();
   }
+
 
   private saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
