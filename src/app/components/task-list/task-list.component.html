@@ -38,7 +38,7 @@
           class="btn btn-primary"
           [disabled]="taskForm.invalid"
         >
-          Añadir tarea
+          <i class="bi bi-plus-circle mr-2"></i> Añadir tarea
         </button>
       </form>
     </div>
@@ -56,14 +56,18 @@
               <button
                 class="btn btn-sm btn-info mr-2"
                 (click)="toggleDescription(i)"
+                type="button"
               >
-                {{ task.showDescription ? 'Ocultar' : 'Ver' }}
+                <i class="bi" [ngClass]="task.showDescription ? 'bi-eye-slash' : 'bi-eye'"></i>
+                <span class="ml-1">{{ task.showDescription ? 'Ocultar' : 'Ver' }}</span>
               </button>
               <button
                 class="btn btn-sm btn-danger"
                 (click)="deleteTask(i)"
+                type="button"
               >
-                Eliminar
+                <i class="bi bi-trash"></i>
+                <span class="ml-1">Eliminar</span>
               </button>
             </div>
           </div>
